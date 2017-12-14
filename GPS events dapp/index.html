@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div >
+        <h1>Monitor</h1>
+        <div id="monitorVehiclesList"></div>
+    </div>
+    
+    <hr>
+    
+    <div>
+        <h1>Vehicles</h1>
+        <div id="clientVehiclesList"></div>
+            <form>
+                <select id='source-address' name='target-currency' required>
+                    <option value='' disabled selected></option>
+                </select><br>
+                Latitude: <input type="text" id="lat-input"><br>
+                Longitude: <input type="text" id="long-input"><br>
+                Speed: <input type="text" id="speed-input"><br>
+                <input type="button" id="random-gps-button" value="Generate random">
+                <input type="button" id="gps-submit-button" value="Submit">
+            </form>
+    </div>
+    
+    <script type="text/javascript" src="/js/libs/web3.js"></script>
+    <script type="text/javascript" src="/js/libs/bignumber.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/globals.js"></script>
+    
+    <script type="text/javascript">
+        initiate(contractAddress, contractABI);
+
+        for (var i in vehicle_addresses) {
+            document.getElementById('monitorVehiclesList').innerHTML += "<div id='" + vehicle_addresses[i] + "'>" + vehicles[i] + ": No Position</div>"
+        }
+    
+        document.getElementById('random-gps-button').addEventListener('click', randomizeCoordinates, false);
+        document.getElementById('gps-submit-button').addEventListener('click', submitCoordinates, false);
+
+    </script>
+</body>
+</html>
